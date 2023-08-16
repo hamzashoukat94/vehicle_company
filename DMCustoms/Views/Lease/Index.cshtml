@@ -1,0 +1,53 @@
+﻿@model DMCustoms.Models.LeaseInputViewModel
+
+@{
+    ViewData["Title"] = "Calculate Lease Repayment";
+}
+
+<h2>Lease Repayment Calculator</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Lease" asp-action="Calculate" method="post">
+            <div class="form-group">
+                <label asp-for="VehicleType" class="control-label"></label>
+                <select asp-for="VehicleType" class="form-control">
+                    @foreach (var value in Enum.GetValues(typeof(VehicleType)))
+                    {
+                        <option value="@value">@value</option>
+                    }
+                </select>
+                <span asp-validation-for="VehicleType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaseAmount" class="control-label"></label>
+                <input asp-for="LeaseAmount" class="form-control" />
+                <span asp-validation-for="LeaseAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResidualValue" class="control-label"></label>
+                <input asp-for="ResidualValue" class="form-control" />
+                <span asp-validation-for="ResidualValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaseDuration" class="control-label"></label>
+                <input asp-for="LeaseDuration" class="form-control" />
+                <span asp-validation-for="LeaseDuration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Calculate" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Back</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

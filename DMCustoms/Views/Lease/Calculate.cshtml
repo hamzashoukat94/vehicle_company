@@ -1,0 +1,59 @@
+﻿@model DMCustoms.Models.LeaseInputViewModel
+<div>
+    <h4>Lease Repayment Calculation Results</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VehicleType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VehicleType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LeaseAmount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LeaseAmount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResidualValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResidualValue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LeaseDuration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LeaseDuration)
+        </dd>
+        <dt class="col-sm-2">
+            Monthly Payment
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.MonthlyPayment
+        </dd>
+        <dt class="col-sm-2">
+            Total Interest
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.TotalInterest
+        </dd>
+        <dt class="col-sm-2">
+            Total Amount To Pay
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.TotalAmountToPay
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-controller="Lease" asp-action="Index">Back</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
